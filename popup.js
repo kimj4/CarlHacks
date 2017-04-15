@@ -16,8 +16,6 @@ function getCurrentTabUrl(callback) {
     currentWindow: true
   };
 
-  console.log("in getCurrentTabUrl");
-
   chrome.tabs.query(queryInfo, function(tabs) {
     // chrome.tabs.query invokes the callback with a list of tabs that match the
     // query. When the popup is opened, there is certainly a window and at least
@@ -91,7 +89,7 @@ document.addEventListener('DOMContentLoaded', function() {
   // var img = document.createElement("IMG");
   // img.src = "/cat.png";
   // div.appendChild(img);
-  // document.body.appendChild(div);
+  // document.body.appendChild(div);  
 
   getCurrentTabUrl(function(url) {
     pathArray = url.split( '/' );
