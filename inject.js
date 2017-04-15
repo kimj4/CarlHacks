@@ -4,7 +4,7 @@ chrome.runtime.onMessage.addListener(
     var div = document.createElement('div');
     div.style.left = '50\%';
     var img = document.createElement('img');
-    img.src = "/cat.png";
+    img.src = "https://i.ytimg.com/vi/tntOCGkgt98/maxresdefault.jpg";
     div.appendChild(img);
     document.body.appendChild(div);
 });

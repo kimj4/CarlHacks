@@ -15,8 +15,6 @@ function getCurrentTabUrl(callback) {
   });
 }
 
-
-
 function checkCurrent() {
   getCurrentTabUrl(function(url) {
     chrome.storage.sync.get({
@@ -32,7 +30,9 @@ function checkCurrent() {
       var homesite = host;
 
       var i, ulen;
+
       ulen = goodUrlsArray.length;
+
       for (i = 0; i < ulen; i++) {
         if (homesite == goodUrlsArray[i]) {
           if (Math.random() < 1) {
