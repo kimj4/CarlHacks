@@ -1,4 +1,4 @@
-setInterval(checkCurrent, 500); // run every second
+setInterval(checkCurrent, 1 * 1000); // run minute`
 
 function getCurrentTabUrl(callback) {
   var queryInfo = {
@@ -35,7 +35,7 @@ function checkCurrent() {
 
       for (i = 0; i < ulen; i++) {
         if (homesite == goodUrlsArray[i]) {
-          if (Math.random() < 1) {
+          if (Math.random() < 0.5) {
             // send message to the current tab
             chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
               chrome.tabs.sendMessage(tabs[0].id, {greeting: "hello"}, function(response) {
