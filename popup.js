@@ -70,23 +70,14 @@ function renderStatus(statusText) {
 
 
 document.addEventListener('DOMContentLoaded', function() {
-  var div = document.createElement("DIV");
-  div.id = "someName";
-  var img = document.createElement("IMG");
-  img.src = "/cat.png";
-  div.appendChild(img);
-  document.body.appendChild(div);
+  // var div = document.createElement("DIV");
+  // div.id = "someName";
+  // var img = document.createElement("IMG");
+  // img.src = "/cat.png";
+  // div.appendChild(img);
+  // document.body.appendChild(div);
 
   getCurrentTabUrl(function(url) {
-   renderStatus('Detecting ' + url);
-
-
-   });
- });
-
-document.addEventListener('DOMContentLoaded', function() {
-  //getCurrentTabUrl(function(url) {
-  getCurrentTabUrl(function(url) {
-    renderStatus("url");
+    renderStatus('Detecting ' + url);
   });
-});
+ });
