@@ -91,8 +91,6 @@ document.addEventListener('DOMContentLoaded', function populateZoo() {
     }
   });
 });
-<<<<<<< HEAD
-
 document.addEventListener('DOMContentLoaded', function() {
   document.getElementById('removeCatsBtn').addEventListener('click', removeAllCats);
 })
@@ -104,18 +102,3 @@ function removeAllCats() {
     location.reload();
   });
 }
-
-document.addEventListener('DOMContentLoaded', function() {
-  getCurrentTabUrl(function(url) {
-    pathArray = url.split( '/' );
-    var protocol = pathArray[0];
-    var host = pathArray[2];
-    var homesite = protocol + '//' + host;
-
-    if (homesite == "https://www.google.com") {
-      renderStatus('You\'re on an approved site');
-    }
-  });
- });
-=======
->>>>>>> 7cf808c98f2360f55d990657e1043f10584cbe65
