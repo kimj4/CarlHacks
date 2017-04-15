@@ -1,4 +1,3 @@
-
 alert('icon clicked')
 var div = document.createElement("DIV");
 div.id = "someName";

@@ -16,6 +16,7 @@ function getCurrentTabUrl(callback) {
 }
 
 
+
 function checkCurrent() {
   getCurrentTabUrl(function(url) {
     chrome.storage.sync.get({
@@ -34,22 +35,11 @@ function checkCurrent() {
       ulen = goodUrlsArray.length;
       for (i = 0; i < ulen; i++) {
         if (homesite == goodUrlsArray[i]) {
+          if (Math.random() < .001) {
+            chrome.tabs.executeScript()
+          }
         }
       }
     });
   });
 }
-
-
-// document.addEventListener('DOMContentLoaded', function() {
-//   var div = document.createElement("DIV");
-//   div.id = "someName";
-//   var img = document.createElement("IMG");
-//   img.src = "/cat.png";
-//   div.appendChild(img);
-//   document.body.appendChild(div);
-//
-//   getCurrentTabUrl(function(url) {
-//     renderStatus('Detecting ' + url);
-//   });
-//  });

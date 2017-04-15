@@ -30,3 +30,6 @@ doc.tech
 
 unifyPizza
 - allows shopping for pizza across different stores
+
+
+inject cats into the page and click to Collect ****
