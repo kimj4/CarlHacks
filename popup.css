@@ -7,3 +7,7 @@ body {
   min-height:500px;
   background-color: #ededed;
 }
+
+#headerdiv {
+  padding-bottom: 10px;
+}
