@@ -46,55 +46,65 @@ document.addEventListener('DOMContentLoaded', function populateZoo() {
     userUrls: '',
     catsArray: []
   }, function(items) {
+    // generate the number of circles that you need based on the number of cats
+    var numCats = items.catsArray.length;
+    var numRows = Math.ceil(numCats / 3)
+
+
     var x ="", i, j;
     var offsetWidth = document.getElementById('zoodiv').offsetWidth;
     var thirdOffsetWidth = offsetWidth / 3;
 
-    // add circles and cats
-    for (i=1; i<=4; i++) {
-
-      // x = x + '<div id="layer ' + i + '">';
-      // for (j = 1; j <= 3; j++) {
-      //   x = x + '<img src="/icons/circle.png" height="' + thirdOffsetWidth +
-      //     '" width = "' + thirdOffsetWidth + '">';
-      // }
-      // x = x + '</div>';
+    // add circles
+    for (i = 0; i < numRows; i++) {
       var div = document.createElement('div');
       div.id = 'layer ' + i;
       div.style.width = offsetWidth.toString() + 'px';
       div.style.position = 'relative';
-      var posy = (i - 1) * thirdOffsetWidth;
+      var posy = i * thirdOffsetWidth;
       // var posy = offsetWidth;
       div.style.top = posy.toString() + 'px';
-      for (j = 1; j <= 3; j++) {
+      for (j = 0; j < 3; j++) {
           var img = document.createElement('img');
           img.src = "/icons/circle.png";
           img.height = thirdOffsetWidth;
           img.width = thirdOffsetWidth;
           img.style.position = 'absolute';
-          var pos = (j - 1) * (thirdOffsetWidth);
+          var pos = j * (thirdOffsetWidth);
           img.style.left = pos.toString() + 'px';
           div.appendChild(img);
       }
       document.getElementById("zoodiv").appendChild(div);
     }
 
-    for (i = 0; i < 4; i++) {
-      var curLayer = document.getElementById('layer ' + (i + 1).toString());
-      for (j = 0; j < 3; j++) {
-          var cat = document.createElement('img');
-          cat.id = 'cat' + (i + j + 1).toString();
-          cat.src = items.catsArray[i + j];
-          cat.height = thirdOffsetWidth;
-          cat.width = thirdOffsetWidth;
-          cat.style.position = 'absolute';
-          var posl = j * thirdOffsetWidth;
-          // alert(posl);
-          cat.style.left = posl.toString() + 'px';
-          // cat.style.top = 0;
-          curLayer.appendChild(cat);
-      }
+    for (i = 0; i < numCats; i++) {
+      var curLayer = document.getElementById('layer ' + Math.floor(i / 3).toString());
+
+      var cat = document.createElement('img');
+      cat.id = 'cat' + i.toString();
+      cat.src = items.catsArray[i];
+      cat.height = thirdOffsetWidth;
+      cat.width = thirdOffsetWidth;
+      cat.style.position = 'absolute';
+      var posl = i % 3 * thirdOffsetWidth;
+      cat.style.left = posl.toString() + 'px';
+      curLayer.appendChild(cat);
     }
+
+    // for (i = 0; i <= numRows; i++) {
+    //   var curLayer = document.getElementById('layer ' + i.toString());
+    //   for (j = 0; j < 3; j++) {
+    //       var cat = document.createElement('img');
+    //       cat.id = 'cat' + (i + j + 1).toString();
+    //       cat.src = items.catsArray[i + j];
+    //       cat.height = thirdOffsetWidth;
+    //       cat.width = thirdOffsetWidth;
+    //       cat.style.position = 'absolute';
+    //       var posl = j * thirdOffsetWidth;
+    //       cat.style.left = posl.toString() + 'px';
+    //       curLayer.appendChild(cat);
+    //   }
+    // }
 
     // for (i = 1; i <= items.catsArray.length; i++) {
     //   // alert(items.catsArray.length);
@@ -122,7 +132,7 @@ document.addEventListener('DOMContentLoaded', function() {
     var protocol = pathArray[0];
     var host = pathArray[2];
     var homesite = protocol + '//' + host;
-    renderStatus('Detecting ' + homesite);
+
     if (homesite == "https://www.google.com") {
       renderStatus('You\'re on an approved site');
     }
