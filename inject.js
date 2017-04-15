@@ -1,4 +1,21 @@
+// function frame() {
+//     if () {
+//         clearInterval(id);
+//     } else {
+//         /* code to change the element style */
+//     }
+// }
+//
+// function travel(id) {
+//   var x = id.style.left;
+//   var y = id.style.top;
+//   function frame() {
+//     if ()
+//   }
+// }
+
 function dothing() {
+  // var id = setInterval(frame, 5);
   document.getElementById('cat').remove();
   chrome.storage.sync.get({
     catsArray: []
@@ -64,9 +81,3 @@ function getRandomInt(min, max) {
   max = Math.floor(max);
   return Math.floor(Math.random() * (max - min)) + min;
 }
-
-
-// var div2 = document.getElementById('cat')[0];
-// div2.addEventListener('click', function (event) {
-//   alert('Hi!');
-// });

@@ -50,7 +50,6 @@ document.addEventListener('DOMContentLoaded', function populateZoo() {
     var numCats = items.catsArray.length;
     var numRows = Math.ceil(numCats / 3)
 
-
     var x ="", i, j;
     var offsetWidth = document.getElementById('zoodiv').offsetWidth;
     var thirdOffsetWidth = offsetWidth / 3;
