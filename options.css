@@ -8,6 +8,14 @@ body {
   background-color: #ededed;
 }
 
+h1 {
+  text-align: center;
+}
+
+#tbox {
+  vertical-align: bottom;
+}
+
 .deleteBtn {
   padding: 20;
   margin: 5px;
