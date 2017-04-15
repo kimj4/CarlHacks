@@ -125,6 +125,17 @@ document.addEventListener('DOMContentLoaded', function populateZoo() {
   });
 });
 
+document.addEventListener('DOMContentLoaded', function() {
+  document.getElementById('removeCatsBtn').addEventListener('click', removeAllCats);
+})
+
+function removeAllCats() {
+  chrome.storage.sync.set({
+    catsArray: []
+  }, function() {
+    location.reload();
+  });
+}
 
 document.addEventListener('DOMContentLoaded', function() {
   getCurrentTabUrl(function(url) {
