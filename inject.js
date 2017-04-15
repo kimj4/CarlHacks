@@ -1,16 +1,20 @@
 function dothing() {
-  oldCatsArray = chrome.storage.sync.get('catsArray', function(result) {
-    oldCatsArray = result.catsArray;
+  chrome.storage.sync.get({
+    catsArray: []
+  }, function(items) {
+    var oldCatsArray = items.catsArray;
+    if (oldCatsArray.length != 0) {
+      oldCatsArray.push(catCode);
+    } else {
+      oldCatsArray = [catCode];
+    }
+    console.log(oldCatsArray);
+    chrome.storage.sync.set({
+      catsArray: oldCatsArray
+    })
   });
-  if (oldCatsArray) {
-    oldCatsArray.push(catCode);
-  } else {
-    oldCatsArray = [catCode];
-  }
-  console.log(oldCatsArray);
-  chrome.storage.sync.set({
-    catsArray: oldCatsArray
-  })
+
+
 };
 
 var catCode;

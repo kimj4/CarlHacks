@@ -9,42 +9,17 @@
  *   is found.
  */
 function getCurrentTabUrl(callback) {
-  // Query filter to be passed to chrome.tabs.query - see
-  // https://developer.chrome.com/extensions/tabs#method-query
   var queryInfo = {
     active: true,
     currentWindow: true
   };
 
   chrome.tabs.query(queryInfo, function(tabs) {
-    // chrome.tabs.query invokes the callback with a list of tabs that match the
-    // query. When the popup is opened, there is certainly a window and at least
-    // one tab, so we can safely assume that |tabs| is a non-empty array.
-    // A window can only have one active tab at a time, so the array consists of
-    // exactly one tab.
     var tab = tabs[0];
-
-    // A tab is a plain object that provides information about the tab.
-    // See https://developer.chrome.com/extensions/tabs#type-Tab
     var url = tab.url;
-
-    // tab.url is only available if the "activeTab" permission is declared.
-    // If you want to see the URL of other tabs (e.g. after removing active:true
-    // from |queryInfo|), then the "tabs" permission is required to see their
-    // "url" properties.
     console.assert(typeof url == 'string', 'tab.url should be a string');
-
     callback(url);
   });
-
-  // Most methods of the Chrome extension APIs are asynchronous. This means that
-  // you CANNOT do something like this:
-  //
-  // var url;
-  // chrome.tabs.query(queryInfo, function(tabs) {
-  //   url = tabs[0].url;
-  // });
-  // alert(url); // Shows "undefined", because chrome.tabs.query is async.
 }
 
 
@@ -67,30 +42,69 @@ function renderStatus(statusText) {
 }
 
 document.addEventListener('DOMContentLoaded', function populateZoo() {
+  chrome.storage.sync.get({
+    userUrls: '',
+    catsArray: []
+  }, function(items) {
     var x ="", i, j;
     var offsetWidth = document.getElementById('zoodiv').offsetWidth;
-    var thirdOffsetWidth = offsetWidth/3;
+    var thirdOffsetWidth = offsetWidth / 3;
+
+    // add circles and cats
     for (i=1; i<=4; i++) {
-      console.log("entered");
-      x = x + '<div id="layer ' + i + '">';
+
+      // x = x + '<div id="layer ' + i + '">';
+      // for (j = 1; j <= 3; j++) {
+      //   x = x + '<img src="/icons/circle.png" height="' + thirdOffsetWidth +
+      //     '" width = "' + thirdOffsetWidth + '">';
+      // }
+      // x = x + '</div>';
+      var div = document.createElement('div');
+      div.id = 'layer ' + i;
+      div.style.width = offsetWidth.toString() + 'px';
+      div.style.position = 'relative';
+      var posy = (i - 1) * thirdOffsetWidth;
+      // var posy = offsetWidth;
+      div.style.top = posy.toString() + 'px';
       for (j = 1; j <= 3; j++) {
-        x = x + '<img src="/icons/circle.png" height="' + thirdOffsetWidth +
-          '" width = "' + thirdOffsetWidth + '">';
+          var img = document.createElement('img');
+          img.src = "/icons/circle.png";
+          img.height = thirdOffsetWidth;
+          img.width = thirdOffsetWidth;
+          img.style.position = 'absolute';
+          var pos = (j-1) * (thirdOffsetWidth);
+          img.style.left = pos.toString() + 'px';
+
+          div.appendChild(img);
       }
-      x = x + '</div>';
-      document.getElementById("zoodiv").innerHTML = x;
+      document.getElementById("zoodiv").appendChild(div);
+
+
+      // document.getElementById("zoodiv").innerHTML = x;
     }
+
+    for (i = 1; i <= items.catsArray.length; i++) {
+      // alert(items.catsArray.length);
+      var curLayer = document.getElementById('layer ' + i);
+      var cat = document.createElement('img');
+      cat.id = 'cat' + i;
+      cat.src = items.catsArray[i - 1];
+      cat.height = thirdOffsetWidth;
+      cat.width = thirdOffsetWidth;
+
+      cat.style.position = 'absolute';
+      var posl = i * thirdOffsetWidth;
+      cat.style.left = posl.toString + 'px';
+      // cat.style.top = 0;
+
+      curLayer.appendChild(cat);
+    }
+
+  });
 });
 
 
 document.addEventListener('DOMContentLoaded', function() {
-  // var div = document.createElement("DIV");
-  // div.id = "someName";
-  // var img = document.createElement("IMG");
-  // img.src = "/cat.png";
-  // div.appendChild(img);
-  // document.body.appendChild(div);  
-
   getCurrentTabUrl(function(url) {
     pathArray = url.split( '/' );
     var protocol = pathArray[0];
