@@ -7,6 +7,13 @@ function saveData() {
       // Update status to let user know options were saved.
       var status = document.getElementById('status');
       status.textContent = 'Options saved.';
+      var savedList = document.getElementById('savedList');
+      var i;
+      urlsArray = urls.split(/\r\n|\r|\n/);
+      for (i = 0; i < urlsArray.length; i++) {
+        savedList.insertAdjacentHTML('beforeend',
+          '<li>' + urlsArray[i] + '<button class="deleteBtn">&#10006;</button></li>');
+      }
       setTimeout(function() {
         status.textContent = '';
       }, 750);
