@@ -1,14 +1,45 @@
+function dothing() {
+  alert("aaa");
+};
+
 // adds an image to the page when background.js says to
 chrome.runtime.onMessage.addListener(
   function(request, sender, sendResponse) {
-    var div = document.createElement('div');
-    div.style.left = '50\%';
-    var img = document.createElement('img');
-    img.src = "https://i.ytimg.com/vi/tntOCGkgt98/maxresdefault.jpg";
-    img.height = '50';
-    img.width = '50';
-    // img.width = '50px';
-    div.appendChild(img);
+    if (document.getElementById('cat') == null) {
+      var div = document.createElement('div');
+      div.style.position = 'absolute';
 
-    document.body.appendChild(div);
+      var left = Math.random() * 100;
+      div.style.left = left.toString() + "\%";
+
+      var right = Math.random() * 100;
+      div.style.right = right.toString() + "\%";
+
+      var top = Math.random() * 100;
+      div.style.top = top.toString() + "\%";
+
+      var bottom = Math.random() * 100;
+      div.style.bottom = bottom.toString() + "\%";
+      // alert(div.style.left + "   " + div.style.right);
+
+      var img = document.createElement('img');
+      img.src = "https://i.ytimg.com/vi/tntOCGkgt98/maxresdefault.jpg";
+      img.height = '50';
+      img.width = '50';
+      div.id = 'cat';
+      div.appendChild(img);
+      document.body.appendChild(div);
+      var div2 = document.getElementById('cat');
+      div2.addEventListener("click", dothing);
+    } else {
+      // alert(document.getElementById('cat'));
+    }
+
+
 });
+
+
+// var div2 = document.getElementById('cat')[0];
+// div2.addEventListener('click', function (event) {
+//   alert('Hi!');
+// });
