@@ -7,3 +7,14 @@ body {
   min-height:500px;
   background-color: #ededed;
 }
+
+.deleteBtn {
+  padding: 20;
+  margin: 5px;
+  border: none;
+  background: none;
+}
+
+a[href], input[type='submit'], input[type='image'], label[for], select, button, .pointer {
+       cursor: pointer;
+}
