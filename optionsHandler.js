@@ -10,14 +10,24 @@ function saveData() {
       var savedList = document.getElementById('savedList');
       var i;
       urlsArray = urls.split(/\r\n|\r|\n/);
+      savedList.innerHTML = "";
       for (i = 0; i < urlsArray.length; i++) {
         savedList.insertAdjacentHTML('beforeend',
           '<li>' + urlsArray[i] + '<button class="deleteBtn">&#10006;</button></li>');
+
+      }
+      for (i = 0; i <urlsArray.length; i++) {
+        document.getElementsByClassName('deleteBtn')[i].addEventListener('click', removeData);
       }
       setTimeout(function() {
         status.textContent = '';
       }, 750);
     });
+}
+
+function removeData() {
+  console.log("jfc");
+  chrome.storage.sync.remove("www.google.com");
 }
 
 // Restores select box and checkbox state using the preferences
