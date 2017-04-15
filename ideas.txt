@@ -1,0 +1,32 @@
+ENROLL extension
+- allow schedule building
+- shows spreadsheet
+- shows schedule conflicts
+- marks classes in a map
+- alerts if classes are too far away within 10 mins
+
+brainstormer.tech
+- allows making bubbles with pictures and words
+- can draw connections between bubbles
+
+#goals
+- make goals
+- can check progress on each goal
+- can make #squadGoals that is shareable
+
+some game
+
+coffee + tea brewing app
+- tracks recipes
+- includes preset timers
+- crowd sourced? upload your own recipes
+
+doc.tech
+- tracks progress on doc tickets
+- graphical progress marker
+- can view tech notes (that the tech chooses to release)
+- allows for transparancy
+- basically domino's pizza tracker for doc tickets
+
+unifyPizza
+- allows shopping for pizza across different stores
