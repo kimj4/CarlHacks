@@ -13,12 +13,10 @@ function saveData() {
       savedList.innerHTML = "";
       for (i = 0; i < urlsArray.length; i++) {
         savedList.insertAdjacentHTML('beforeend',
-          '<li>' + urlsArray[i] + '<button class="deleteBtn">&#10006;</button></li>');
-
+          '<li>' + urlsArray[i] + '</li>');
       }
-      for (i = 0; i <urlsArray.length; i++) {
-        document.getElementsByClassName('deleteBtn')[i].addEventListener('click', removeData);
-      }
+      document.getElementById('allSaved').insertAdjacentHTML('afterend', '<div><button id="remove">Remove all</button></div>');
+      document.getElementById('remove').addEventListener('click', removeData);
       setTimeout(function() {
         status.textContent = '';
       }, 750);
@@ -27,7 +25,12 @@ function saveData() {
 
 function removeData() {
   console.log("jfc");
-  chrome.storage.sync.remove("www.google.com");
+  chrome.storage.sync.set({
+    userUrls: ''
+  }, function() {
+    var savedList = document.getElementById('savedList');
+    savedList.innerHTML = "";
+  });
 }
 
 // Restores select box and checkbox state using the preferences
