@@ -72,33 +72,45 @@ document.addEventListener('DOMContentLoaded', function populateZoo() {
           img.height = thirdOffsetWidth;
           img.width = thirdOffsetWidth;
           img.style.position = 'absolute';
-          var pos = (j-1) * (thirdOffsetWidth);
+          var pos = (j - 1) * (thirdOffsetWidth);
           img.style.left = pos.toString() + 'px';
-
           div.appendChild(img);
       }
       document.getElementById("zoodiv").appendChild(div);
-
-
-      // document.getElementById("zoodiv").innerHTML = x;
     }
 
-    for (i = 1; i <= items.catsArray.length; i++) {
-      // alert(items.catsArray.length);
-      var curLayer = document.getElementById('layer ' + i);
-      var cat = document.createElement('img');
-      cat.id = 'cat' + i;
-      cat.src = items.catsArray[i - 1];
-      cat.height = thirdOffsetWidth;
-      cat.width = thirdOffsetWidth;
-
-      cat.style.position = 'absolute';
-      var posl = i * thirdOffsetWidth;
-      cat.style.left = posl.toString + 'px';
-      // cat.style.top = 0;
-
-      curLayer.appendChild(cat);
+    for (i = 0; i < 4; i++) {
+      var curLayer = document.getElementById('layer ' + (i + 1).toString());
+      for (j = 0; j < 3; j++) {
+          var cat = document.createElement('img');
+          cat.id = 'cat' + (i + j + 1).toString();
+          cat.src = items.catsArray[i + j];
+          cat.height = thirdOffsetWidth;
+          cat.width = thirdOffsetWidth;
+          cat.style.position = 'absolute';
+          var posl = j * thirdOffsetWidth;
+          // alert(posl);
+          cat.style.left = posl.toString() + 'px';
+          // cat.style.top = 0;
+          curLayer.appendChild(cat);
+      }
     }
+
+    // for (i = 1; i <= items.catsArray.length; i++) {
+    //   // alert(items.catsArray.length);
+    //   var curLayer = document.getElementById('layer ' + Math.ceil(i/3).toString());
+    //   var cat = document.createElement('img');
+    //   cat.id = 'cat' + i;
+    //   cat.src = items.catsArray[i - 1];
+    //   cat.height = thirdOffsetWidth;
+    //   cat.width = thirdOffsetWidth;
+    //
+    //   cat.style.position = 'absolute';
+    //   var posl = i * thirdOffsetWidth;
+    //   cat.style.left = posl.toString + 'px';
+    //   // cat.style.top = 0;
+    //   curLayer.appendChild(cat);
+    // }
 
   });
 });

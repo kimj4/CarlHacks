@@ -13,8 +13,6 @@ function dothing() {
       catsArray: oldCatsArray
     })
   });
-
-
 };
 
 var catCode;
