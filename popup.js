@@ -94,6 +94,13 @@ document.addEventListener('DOMContentLoaded', function() {
   // document.body.appendChild(div);
 
   getCurrentTabUrl(function(url) {
-    renderStatus('Detecting ' + url);
+    pathArray = url.split( '/' );
+    var protocol = pathArray[0];
+    var host = pathArray[2];
+    var homesite = protocol + '//' + host;
+    renderStatus('Detecting ' + homesite);
+    if (homesite == "https://www.google.com") {
+      renderStatus('You\'re on an approved site');
+    }
   });
  });
