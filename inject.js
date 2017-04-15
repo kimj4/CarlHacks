@@ -40,7 +40,7 @@ chrome.runtime.onMessage.addListener(
 
       var img = document.createElement('img');
 
-      var randomCat = getRandomInt(1,4);
+      var randomCat = getRandomInt(1,5);
 
       var randomizedImgUrl = "icons/cat" + randomCat + ".png";
       img.src = chrome.extension.getURL(randomizedImgUrl);
