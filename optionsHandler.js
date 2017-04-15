@@ -15,8 +15,10 @@ function saveData() {
         savedList.insertAdjacentHTML('beforeend',
           '<li>' + urlsArray[i] + '</li>');
       }
-      document.getElementById('allSaved').insertAdjacentHTML('afterend', '<div><button id="remove">Remove all</button></div>');
-      document.getElementById('remove').addEventListener('click', removeData);
+      if (document.getElementById('remove') == null) {
+        document.getElementById('allSaved').insertAdjacentHTML('afterend', '<div><button id="remove">Remove all</button></div>');
+        document.getElementById('remove').addEventListener('click', removeData);
+      }
       setTimeout(function() {
         status.textContent = '';
       }, 750);
@@ -30,6 +32,8 @@ function removeData() {
   }, function() {
     var savedList = document.getElementById('savedList');
     savedList.innerHTML = "";
+    var tbox = document.getElementById('tbox');
+    tbox.value = '';
   });
 }
 

@@ -79,7 +79,6 @@ document.addEventListener('DOMContentLoaded', function populateZoo() {
 
     for (i = 0; i < numCats; i++) {
       var curLayer = document.getElementById('layer ' + Math.floor(i / 3).toString());
-
       var cat = document.createElement('img');
       cat.id = 'cat' + i.toString();
       cat.src = items.catsArray[i];
@@ -90,51 +89,5 @@ document.addEventListener('DOMContentLoaded', function populateZoo() {
       cat.style.left = posl.toString() + 'px';
       curLayer.appendChild(cat);
     }
-
-    // for (i = 0; i <= numRows; i++) {
-    //   var curLayer = document.getElementById('layer ' + i.toString());
-    //   for (j = 0; j < 3; j++) {
-    //       var cat = document.createElement('img');
-    //       cat.id = 'cat' + (i + j + 1).toString();
-    //       cat.src = items.catsArray[i + j];
-    //       cat.height = thirdOffsetWidth;
-    //       cat.width = thirdOffsetWidth;
-    //       cat.style.position = 'absolute';
-    //       var posl = j * thirdOffsetWidth;
-    //       cat.style.left = posl.toString() + 'px';
-    //       curLayer.appendChild(cat);
-    //   }
-    // }
-
-    // for (i = 1; i <= items.catsArray.length; i++) {
-    //   // alert(items.catsArray.length);
-    //   var curLayer = document.getElementById('layer ' + Math.ceil(i/3).toString());
-    //   var cat = document.createElement('img');
-    //   cat.id = 'cat' + i;
-    //   cat.src = items.catsArray[i - 1];
-    //   cat.height = thirdOffsetWidth;
-    //   cat.width = thirdOffsetWidth;
-    //
-    //   cat.style.position = 'absolute';
-    //   var posl = i * thirdOffsetWidth;
-    //   cat.style.left = posl.toString + 'px';
-    //   // cat.style.top = 0;
-    //   curLayer.appendChild(cat);
-    // }
-
   });
 });
-
-
-document.addEventListener('DOMContentLoaded', function() {
-  getCurrentTabUrl(function(url) {
-    pathArray = url.split( '/' );
-    var protocol = pathArray[0];
-    var host = pathArray[2];
-    var homesite = protocol + '//' + host;
-
-    if (homesite == "https://www.google.com") {
-      renderStatus('You\'re on an approved site');
-    }
-  });
- });
