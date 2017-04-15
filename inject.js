@@ -1,19 +1,19 @@
 function dothing() {
-  alert("aaa");
-
   oldCatsArray = chrome.storage.sync.get('catsArray', function(result) {
     oldCatsArray = result.catsArray;
   });
   if (oldCatsArray) {
-    oldCatsArray.push(1);
+    oldCatsArray.push(catCode);
   } else {
-    oldCatsArray = [1];
+    oldCatsArray = [catCode];
   }
   console.log(oldCatsArray);
   chrome.storage.sync.set({
     catsArray: oldCatsArray
   })
 };
+
+var catCode;
 
 // adds an image to the page when background.js says to
 chrome.runtime.onMessage.addListener(
@@ -36,7 +36,12 @@ chrome.runtime.onMessage.addListener(
       // alert(div.style.left + "   " + div.style.right);
 
       var img = document.createElement('img');
-      img.src = "https://i.ytimg.com/vi/tntOCGkgt98/maxresdefault.jpg";
+
+      var randomCat = getRandomInt(1,4);
+
+      var randomizedImgUrl = "icons/cat" + randomCat + ".png";
+      img.src = chrome.extension.getURL(randomizedImgUrl);
+      catCode = randomizedImgUrl;
       img.height = '50';
       img.width = '50';
       div.id = 'cat';
@@ -50,6 +55,12 @@ chrome.runtime.onMessage.addListener(
 
 
 });
+
+function getRandomInt(min, max) {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min)) + min;
+}
 
 
 // var div2 = document.getElementById('cat')[0];
