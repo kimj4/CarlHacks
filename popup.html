@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <!--
  This page is shown when the extension button is clicked, because the
  "browser_action" field in manifest.json contains the "default_popup" key with
@@ -7,45 +7,30 @@
 <html>
   <head>
     <title>Getting Started Extension's Popup</title>
-    <style>
-      body {
-        font-family: "Segoe UI", "Lucida Grande", Tahoma, sans-serif;
-        font-size: 100%;
-      }
-      #status {
-        /* avoid an excessively wide status text */
-        white-space: pre;
-        /*text-overflow: ellipsis;
-        overflow: hidden;*/
-        max-width: 1000px;
-      }
-      #someName img{
-        position: fixed;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-      }
-      #someName{
-        background-color: rgba(240,240,240,0.7);
-        width: 100%;
-        height: 100%;
-        position:fixed;
-        top:0;
-        left:0;
-      }
-
-    </style>
-
-    <!--
-      - JavaScript and HTML must be in separate files: see our Content Security
-      - Policy documentation[1] for details and explanation.
-      -
-      - [1]: https://developer.chrome.com/extensions/contentSecurityPolicy
-     -->
+    <link rel="stylesheet" href="popup.css">
     <script src="popup.js"></script>
   </head>
   <body>
     <div id="status"></div>
+    <div id="headerdiv">
+      <p>Kitty Focus</p>
+    </div>
+    <div id="zoodiv">
+      <script>
+        function populateZoo() {
+            var x ="", i, j;
+            for (i=1; i<=4; i++) {
+              x = '<p> "BLEH" </p>';
+              x = x + '<div id="layer ' + i + '">';
+              for (j = 1; j <= 4; j++) {
+                x = x + "<img src=cat.png height='42' width = '42'>";
+              }
+              x = x + '</div>';
+            }
+            document.getElementById("populateZoo").innerHTML = x;
+        }
+      </script>
+    </div>
     <img id="image-result" hidden>
   </body>
 </html>
