@@ -1,5 +1,18 @@
 function dothing() {
   alert("aaa");
+
+  oldCatsArray = chrome.storage.sync.get('catsArray', function(result) {
+    oldCatsArray = result.catsArray;
+  });
+  if (oldCatsArray) {
+    oldCatsArray.push(1);
+  } else {
+    oldCatsArray = [1];
+  }
+  console.log(oldCatsArray);
+  chrome.storage.sync.set({
+    catsArray: oldCatsArray
+  })
 };
 
 // adds an image to the page when background.js says to
