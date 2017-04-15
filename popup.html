@@ -11,26 +11,14 @@
     <script src="popup.js"></script>
   </head>
   <body>
-    <div id="status"></div>
-    <div id="headerdiv">
-      <p>Kitty Focus</p>
+    <div id="container">
+      <div id="status"></div>
+      <div id="headerdiv">
+        <p>Kitty Focus</p>
+      </div>
+      <div id="zoodiv">
+      </div>
+      <img id="image-result" hidden>
     </div>
-    <div id="zoodiv">
-      <script>
-        function populateZoo() {
-            var x ="", i, j;
-            for (i=1; i<=4; i++) {
-              x = '<p> "BLEH" </p>';
-              x = x + '<div id="layer ' + i + '">';
-              for (j = 1; j <= 4; j++) {
-                x = x + "<img src=cat.png height='42' width = '42'>";
-              }
-              x = x + '</div>';
-            }
-            document.getElementById("populateZoo").innerHTML = x;
-        }
-      </script>
-    </div>
-    <img id="image-result" hidden>
   </body>
 </html>

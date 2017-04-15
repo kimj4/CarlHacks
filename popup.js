@@ -68,6 +68,22 @@ function renderStatus(statusText) {
   document.getElementById('status').textContent = statusText;
 }
 
+document.addEventListener('DOMContentLoaded', function populateZoo() {
+    var x ="", i, j;
+    var offsetWidth = document.getElementById('zoodiv').offsetWidth;
+    var thirdOffsetWidth = offsetWidth/3;
+    for (i=1; i<=4; i++) {
+      console.log("entered");
+      x = x + '<div id="layer ' + i + '">';
+      for (j = 1; j <= 3; j++) {
+        x = x + '<img src="/icons/circle.png" height="' + thirdOffsetWidth +
+          '" width = "' + thirdOffsetWidth + '">';
+      }
+      x = x + '</div>';
+      document.getElementById("zoodiv").innerHTML = x;
+    }
+});
+
 
 document.addEventListener('DOMContentLoaded', function() {
   // var div = document.createElement("DIV");

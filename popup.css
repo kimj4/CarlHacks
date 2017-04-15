@@ -5,7 +5,9 @@ body {
   vertical-align:middle;
   min-width:300px;
   min-height:500px;
+  background-color: #ededed;
 }
+
 
 #someName img{
   position: fixed;
