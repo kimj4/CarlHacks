@@ -1,21 +1,19 @@
 {
   "manifest_version": 2,
   "name": "Kitty Focus",
-  "version": "itty bitty kitty cat",
+  "version": "1.0",
 
   "default_locale": "en",
   "description": "A less in-your-face productivity app that works with the prinicples of postive feedback. More cats come to visit as you stay on sites that you mark as productive, and they leave once you start spending time in unproductive sites.",
-  "icons": {...},
+  "icons": {"icon.png"},
 
-  // Pick one (or none)
-  "browser_action": {...},
-  "page_action": {...},
+  "browser_action": {
+    "default_icon": "icon.png",
+    "default_popup": "popup.html"
+  },
 
-  // Optional
-  "author": ...,
-  "automation": ...,
+  "author": "Ju Yun Kim and Emma Posega Rappleye",
   "background": {
-    // Recommended
     "persistent": false
   },
   "background_page": ...,
@@ -76,6 +74,6 @@
   "system_indicator": ...,
   "tts_engine": {...},
   "update_url": "http://path/to/updateInfo.xml",
-  "version_name": "aString",
+  "version_name": "itty bitty kitty cat",
   "web_accessible_resources": [...]
 }
