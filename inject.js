@@ -1,4 +1,5 @@
 function dothing() {
+  document.getElementById('cat').remove();
   chrome.storage.sync.get({
     catsArray: []
   }, function(items) {
