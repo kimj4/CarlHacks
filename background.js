@@ -1,4 +1,4 @@
-setInterval(checkCurrent, 60 * 1000); // run minute`
+setInterval(checkCurrent, 20 * 1000); // run minute`
 
 function getCurrentTabUrl(callback) {
   var queryInfo = {
